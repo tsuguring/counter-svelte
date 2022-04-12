@@ -20,15 +20,9 @@
     return sumcount;
   }
 
-  function titleList(Items: CounterItems[]) {
-    let titlelist = [];
-    Items.forEach((element) => {
-      titlelist = [...titlelist, element.countername];
-    });
-    return titlelist;
-  }
-
-  $: titlelist = titleList(counterItems);
+  $: titlelist = counterItems.map((Item) => {
+    return Item.countername;
+  });
 
   $: sum = sumCount(counterItems);
 </script>
