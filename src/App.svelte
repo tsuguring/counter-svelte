@@ -21,13 +21,13 @@
   }
 
   $: sum = sumCount(counterItems);
+
 </script>
 
 <main>
   <h1>Multiple Counter</h1>
-  {#each counterItems as item, index}
+  {#each $counterItems as item, index}
     <Counter
-      bind:counterItems
       bind:countername={item.countername}
       bind:count={item.count}
       {index}
@@ -36,8 +36,8 @@
   <button on:click={addCounter}>new Counter</button>
   <div class="titleList">
     <p>title list:</p>
-    {#each counterItems as item, index}
-      {#if index === counterItems.length - 1}
+    {#each $counterItems as item, index}
+      {#if index === $counterItems.length - 1}
         <p class="counterName">{item.countername}</p>
       {:else}
         <p class="counterName">{item.countername},</p>

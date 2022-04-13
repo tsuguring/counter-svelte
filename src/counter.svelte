@@ -8,7 +8,6 @@
     countername: string;
     count: number;
   }
-
   function incrementCount() {
     count += 1;
   }
@@ -20,7 +19,6 @@
   function resetCount() {
     count = 0;
   }
-
   function removeCounter() {
     counterItems.splice(index, 1);
     counterItems = counterItems;
