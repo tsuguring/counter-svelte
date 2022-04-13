@@ -12,17 +12,8 @@
     counterItems = [...counterItems, { countername: "new", count: 0 }];
   }
 
-  function sumCount(Items: CounterItems[]) {
-    let sumcount = 0;
-    Items.forEach((element) => {
-      sumcount += element.count;
-    });
-    return sumcount;
-  }
-
   $: titlelist = counterItems.map((Item) => Item.countername)
-
-  $: sum = sumCount(counterItems);
+  $: sum =  countersItems.reduce((sum, current) => sum + current.count, 0)
 </script>
 
 <main>
@@ -40,8 +31,7 @@
     <p>title list:{titlelist}</p>
   </div>
   <div class="countList">
-    <p>sum of count:</p>
-    <p class="sumcount">{sum}</p>
+    <p>sum of count:{sum}</p>
   </div>
 </main>
 
@@ -73,8 +63,5 @@
   .countList {
     display: flex;
     justify-content: center;
-  }
-  .sumcount {
-    margin-left: 5px;
   }
 </style>
