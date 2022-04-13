@@ -16,11 +16,7 @@
     return Item.countername;
   });
 
-  $: sum = counterItems
-    .map((Item) => {
-      return Item.count;
-    })
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+  $: sum =  countersItems.reduce((sum, current) => sum + current.count, 0)
 </script>
 
 <main>
