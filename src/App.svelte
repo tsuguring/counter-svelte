@@ -13,7 +13,6 @@
   }
 
   $: titlelist = counterItems.map((Item) => Item.countername)
-
   $: sum =  countersItems.reduce((sum, current) => sum + current.count, 0)
 </script>
 
