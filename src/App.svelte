@@ -20,9 +20,7 @@
     return sumcount;
   }
 
-  $: titlelist = counterItems.map((Item) => {
-    return Item.countername;
-  });
+  $: titlelist = counterItems.map((Item) => Item.countername)
 
   $: sum = sumCount(counterItems);
 </script>
