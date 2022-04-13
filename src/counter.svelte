@@ -8,6 +8,7 @@
     countername: string;
     count: number;
   }
+
   function incrementCount() {
     count += 1;
   }
