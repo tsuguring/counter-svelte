@@ -1,8 +1,13 @@
 <script lang="ts">
-  import { counterItems } from "./store";
+  export let counterItems: CounterItems[];
   export let countername: string;
   export let count: number;
   export let index: number;
+
+  interface CounterItems {
+    countername: string;
+    count: number;
+  }
 
   function incrementCount() {
     count += 1;
@@ -17,8 +22,8 @@
   }
 
   function removeCounter() {
-    $counterItems.splice(index, 1);
-    $counterItems = $counterItems;
+    counterItems.splice(index, 1);
+    counterItems = counterItems;
   }
 </script>
 

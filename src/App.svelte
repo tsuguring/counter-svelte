@@ -1,31 +1,29 @@
 <script lang="ts">
   import Counter from "./counter.svelte";
-  import { counterItems } from "./store";
 
   interface CounterItems {
     countername: string;
     count: number;
   }
 
+  let counterItems: CounterItems[] = [{ countername: "new", count: 0 }];
+
   function addCounter() {
-    $counterItems = [...$counterItems, { countername: "new", count: 0 }];
+    counterItems = [...counterItems, { countername: "new", count: 0 }];
   }
 
-  function sumCount(Items: CounterItems[]) {
-    let sumcount = 0;
-    Items.forEach((element) => {
-      sumcount += element.count;
-    });
-    return sumcount;
-  }
+  $: titlelist = counterItems.map((Item) => {
+    return Item.countername;
+  });
 
-  $: sum = sumCount($counterItems);
+  $: sum =  countersItems.reduce((sum, current) => sum + current.count, 0)
 </script>
 
 <main>
   <h1>Multiple Counter</h1>
-  {#each $counterItems as item, index}
+  {#each counterItems as item, index}
     <Counter
+      bind:counterItems
       bind:countername={item.countername}
       bind:count={item.count}
       {index}
@@ -33,18 +31,10 @@
   {/each}
   <button on:click={addCounter}>new Counter</button>
   <div class="titleList">
-    <p>title list:</p>
-    {#each $counterItems as item, index}
-      {#if index === $counterItems.length - 1}
-        <p class="counterName">{item.countername}</p>
-      {:else}
-        <p class="counterName">{item.countername},</p>
-      {/if}
-    {/each}
+    <p>title list:{titlelist}</p>
   </div>
   <div class="countList">
-    <p>sum of count:</p>
-    <p class="sumcount">{sum}</p>
+    <p>sum of count:{sum}</p>
   </div>
 </main>
 
@@ -76,11 +66,5 @@
   .countList {
     display: flex;
     justify-content: center;
-  }
-  .counterName {
-    margin-left: 5px;
-  }
-  .sumcount {
-    margin-left: 5px;
   }
 </style>
