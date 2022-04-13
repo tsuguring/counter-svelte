@@ -12,9 +12,7 @@
     counterItems = [...counterItems, { countername: "new", count: 0 }];
   }
 
-  $: titlelist = counterItems.map((Item) => {
-    return Item.countername;
-  });
+  $: titlelist = counterItems.map((Item) => Item.countername)
 
   $: sum =  countersItems.reduce((sum, current) => sum + current.count, 0)
 </script>

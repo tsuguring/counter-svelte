@@ -20,7 +20,6 @@
   function resetCount() {
     count = 0;
   }
-
   function removeCounter() {
     counterItems.splice(index, 1);
     counterItems = counterItems;
